@@ -1,9 +1,12 @@
-import { Router } from 'express';
+const express = require("express");
+const routes  = express.Router();
 
-const routes = Router();
 
-routes.get('/', (req, res) => {
-  return res.send('Hello Ionia');
-});
+const SummonerController = require('./controllers/SummonerController');
 
-export default routes;
+// Inciando a Rota
+routes.get("/summoners", SummonerController.index);
+routes.post("/summoners", SummonerController.store);
+routes.get("/summoners", SummonerController.search);
+
+module.exports = routes;
