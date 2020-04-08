@@ -7,6 +7,5 @@ const SummonerController = require('./controllers/SummonerController');
 // Inciando a Rota
 routes.get("/summoners", SummonerController.index);
 routes.post("/summoners", SummonerController.store);
-//routes.get("/summoners/api-lol", SummonerController.search);
 
 module.exports = routes;
