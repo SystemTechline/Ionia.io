@@ -17,7 +17,8 @@ module.exports = {
     //Rota aplicando API do League of Legends e verificando/armazenando no banco o Summoners cadastrado
     async store(req, res) {
         try{
-            const { summonerName, region } = req.body;
+            const { summonerName, region} = req.body;
+            
 
             const summonerExists = await Summoner.findOne({ summonerName: summonerName });
 
@@ -28,15 +29,20 @@ module.exports = {
             const response = await axios.get(
                     `https://${region}.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=${api_key}`
                 );
+            
+            const { data : {profileIconId} } = response;
+
+            const summonerIcon = `http://ddragon.leagueoflegends.com/cdn/10.7.1/img/profileicon/${profileIconId}.png`;
 
             const summoner = await Summoner.create({
                 summonerName,
                 region
             });
-            
-            console.log("Registered Summoner!");
 
-            return res.json(response.data);
+            const {data} = response;
+
+            console.log("Registered Summoner!");
+            return res.json({data, summonerIcon});
         }catch(error){
             console.log(error);
 
