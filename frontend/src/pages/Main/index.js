@@ -1,22 +1,43 @@
 import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 
+import api from '../../services/api';
+
 import { Container, Header } from './styles';
 
 export default function Main() {
   const [summonerName, setSummonerName] = useState('');
   const [region, setRegion] = useState('BR');
+  const servers = [
+    { id: 'br1', name: 'BR' },
+    { id: 'euw1', name: 'EUW' },
+    { id: 'eun1', name: 'EUNE' },
+    { id: 'jp1', name: 'JP' },
+    { id: 'kr', name: 'KR' },
+    { id: 'la1', name: 'LAN' },
+    { id: 'la2', name: 'LAS' },
+    { id: 'na1', name: 'NA' },
+    { id: 'oce', name: 'OCE' },
+    { id: 'ru', name: 'RU' },
+    { id: 'tr1', name: 'TR' }
+  ]
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log({ summonerName, region });
+
+    const response = await api.post('/summoners', {
+      summonerName,
+      region,
+    });
+
+    console.log(response.data);
   }
 
   return (
     <Container>
       <Header>
         <h1>IONIA</h1>
-        <form className="summoner-info" onSubmit={handleSubmit}>
+        <form method="POST" className="summoner-info" onSubmit={handleSubmit}>
           <input
             type="text"
             name="summoner_name"
@@ -30,17 +51,9 @@ export default function Main() {
             value={region}
             onChange={(e) => setRegion(e.target.value)}
           >
-            <option value="BR">BR</option>
-            <option value="EUW">EUW</option>
-            <option value="EUNE">EUNE</option>
-            <option value="JP">JP</option>
-            <option value="KR">KR</option>
-            <option value="LAN">LAN</option>
-            <option value="LAS">LAS</option>
-            <option value="NA">NA</option>
-            <option value="OCE">OCE</option>
-            <option value="RU">RU</option>
-            <option value="TR">TR</option>
+           {servers.map(server => (
+              <option key={server.id} value={server.id}>{server.name}</option>
+           ))}
           </select>
 
           <button type="submit">
