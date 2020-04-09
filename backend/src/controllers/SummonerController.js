@@ -30,13 +30,15 @@ module.exports = {
                     `https://${region}.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=${api_key}`
                 );
             
-            const { data : {profileIconId} } = response;
+            const { data : {profileIconId, summonerLevel}} = response;
 
             const summonerIcon = `http://ddragon.leagueoflegends.com/cdn/10.7.1/img/profileicon/${profileIconId}.png`;
 
             const summoner = await Summoner.create({
                 summonerName,
-                region
+                region,
+                summonerLevel,
+                profileIconId
             });
 
             const {data} = response;

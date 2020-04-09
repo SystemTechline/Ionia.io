@@ -9,6 +9,12 @@ const SummonerSchema = new mongoose.Schema ({
         type: String,
         required: true,
     },
+    summonerLevel: {
+        type: String,
+    },
+    profileIconId: {
+        type: String,
+    },
     createdAt: {
         type: Date,
         default: Date.now,
