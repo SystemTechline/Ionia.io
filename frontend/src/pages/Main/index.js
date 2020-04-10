@@ -7,7 +7,7 @@ import { Container, Header } from './styles';
 
 export default function Main() {
   const [summonerName, setSummonerName] = useState('');
-  const [region, setRegion] = useState('BR');
+  const [region, setRegion] = useState('br1');
   const servers = [
     { id: 'br1', name: 'BR' },
     { id: 'euw1', name: 'EUW' },
@@ -20,7 +20,7 @@ export default function Main() {
     { id: 'oce', name: 'OCE' },
     { id: 'ru', name: 'RU' },
     { id: 'tr1', name: 'TR' }
-  ]
+  ];
 
   async function handleSubmit(e) {
     e.preventDefault();
