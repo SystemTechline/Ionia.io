@@ -19,32 +19,44 @@ module.exports = {
         try{
             const { summonerName, region} = req.body;
             
+            const response = await axios.get(
+                `https://${region}.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=${api_key}`
+            );
+        
+            const { data : {profileIconId, summonerLevel, accountId}} = response;
 
-            const summonerExists = await Summoner.findOne({ summonerName: summonerName });
+            const urlIcon = `http://ddragon.leagueoflegends.com/cdn/10.7.1/img/profileicon/${profileIconId}.png`;
+
+            const filter = { accountId };
+            const update = { 
+                summonerName,
+                summonerLevel,
+                profileIconId,
+                region,
+                urlIcon
+            };
+
+            let summonerExists = await Summoner.findOneAndUpdate(filter, update);
+
+            summonerExists = await Summoner.findOne(filter);
 
             if (summonerExists) {
                 return res.json(summonerExists);
             }
 
-            const response = await axios.get(
-                    `https://${region}.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summonerName}?api_key=${api_key}`
-                );
-            
-            const { data : {profileIconId, summonerLevel}} = response;
-
-            const summonerIcon = `http://ddragon.leagueoflegends.com/cdn/10.7.1/img/profileicon/${profileIconId}.png`;
-
             const summoner = await Summoner.create({
+                accountId,
                 summonerName,
                 region,
                 summonerLevel,
-                profileIconId
+                profileIconId,
+                urlIcon
             });
 
             const {data} = response;
 
             console.log("Registered Summoner!");
-            return res.json({data, summonerIcon});
+            return res.json({data});
         }catch(error){
             console.log(error);
 

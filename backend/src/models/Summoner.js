@@ -9,10 +9,16 @@ const SummonerSchema = new mongoose.Schema ({
         type: String,
         required: true,
     },
+    accountId: {
+        type: String,
+    },
     summonerLevel: {
         type: String,
     },
     profileIconId: {
+        type: String,
+    },
+    urlIcon:{
         type: String,
     },
     createdAt: {
