@@ -10,16 +10,16 @@ export default function SummonerInfo( { location: { state } } ) {
 
   useEffect(() => {
     setBorder(getBorder(summonerLevel));
-
-    console.log(border);
-  }, [border]); 
+  }, [border, summonerLevel]); 
 
   return (
     <Container>
       <header>
         <div className="icon-group">
           <img id="icon" src={urlIcon} alt={summonerName}/>
-          <img id="border" src={`http://localhost:3333/static/images/${border}.png`} alt="border"/>
+          { border && 
+            <img id="border" src={`http://localhost:3333/static/images/${border}.png`} alt="border"/> 
+          }
         </div>
         <div className="info-group">
           <h2>{summonerName}</h2>

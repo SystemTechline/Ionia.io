@@ -4,7 +4,7 @@ export default function getBorder(summonerLevel) {
   let border;
 
   for(let i = 0; i <= levels.length; i++) {
-    if(summonerLevel > levels[i]) {
+    if(summonerLevel >= levels[i]) {
       border = `lvl${levels[i]}`
     }
   }
