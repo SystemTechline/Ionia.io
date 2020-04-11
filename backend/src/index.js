@@ -18,6 +18,7 @@ mongoose.connect(
 requireDir('./models');
 
 //Rotas
+app.use('/static', express.static('public'));
 app.use('/api', require('./routes'));
 
 app.listen(port, () => console.log(`API on, port ${port}`))
