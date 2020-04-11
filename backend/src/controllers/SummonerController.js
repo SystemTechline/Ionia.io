@@ -53,10 +53,10 @@ module.exports = {
                 urlIcon
             });
 
-            const {data} = response;
+            //const {data} = response;
 
             console.log("Registered Summoner!");
-            return res.json({data});
+            return res.json(summoner);
         }catch(error){
             console.log(error);
 
