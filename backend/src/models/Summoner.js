@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 
 const SummonerSchema = new mongoose.Schema ({
+    summonerId: {
+        type: String,
+    },
     summonerName: {
         type: String,
         required: true,
