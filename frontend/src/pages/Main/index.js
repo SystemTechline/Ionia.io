@@ -3,9 +3,9 @@ import { FaSearch } from 'react-icons/fa';
 
 import api from '../../services/api';
 
-import { Container, Header } from './styles';
+import { Container } from './styles';
 
-export default function Main() {
+export default function Main({ history }) {
   const [summonerName, setSummonerName] = useState('');
   const [region, setRegion] = useState('br1');
   const servers = [
@@ -29,38 +29,36 @@ export default function Main() {
       summonerName,
       region,
     });
-
-    console.log(response.data);
+    
+    history.push('/summoner', response.data);
   }
 
   return (
     <Container>
-      <Header>
-        <h1>IONIA</h1>
-        <form method="POST" className="summoner-info" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="summoner_name"
-            placeholder="Seu nome de invocador"
-            value={summonerName}
-            onChange={(e) => setSummonerName(e.target.value)}
-          />
+      <h1>IONIA</h1>
+      <form method="POST" className="summoner-info" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="summoner_name"
+          placeholder="Seu nome de invocador"
+          value={summonerName}
+          onChange={(e) => setSummonerName(e.target.value)}
+        />
 
-          <select
-            name="region"
-            value={region}
-            onChange={(e) => setRegion(e.target.value)}
-          >
-           {servers.map(server => (
-              <option key={server.id} value={server.id}>{server.name}</option>
-           ))}
-          </select>
+        <select
+          name="region"
+          value={region}
+          onChange={(e) => setRegion(e.target.value)}
+        >
+          {servers.map(server => (
+            <option key={server.id} value={server.id}>{server.name}</option>
+          ))}
+        </select>
 
-          <button type="submit">
-            <FaSearch />
-          </button>
-        </form>
-      </Header>
+        <button type="submit">
+          <FaSearch />
+        </button>
+      </form>
     </Container>
   );
 }

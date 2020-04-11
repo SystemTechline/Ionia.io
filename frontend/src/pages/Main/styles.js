@@ -2,33 +2,16 @@ import styled from 'styled-components';
 
 import bg from '../../images/ionia.jpg';
 
-export const Container = styled.div`
+export const Container = styled.main`
   height: 100vh;
-`;
-
-export const Header = styled.header`
-  height: calc(50% + 5px);
-  margin-bottom:50px;
-  border-bottom: 1em solid #ca9d4b;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-shadow: 1px 1px 3px #0e141b;
-  
-  &::before {
-    content: "";
-    position: fixed;
-    left: 0;
-    right: 0;
-    z-index: -3;
-    height: 50%;
-    display: block;
-    background-image: url(${bg});
-    background-position: center;
-    background-size: cover;
-    filter: blur(4px);
-  }
+  background-image: url(${bg});
+  background-position: center;
+  background-size: cover;
 
   h1 {
     font-family: 'Beaufort Bold', 'Times New Roman', Times, serif;
@@ -37,7 +20,6 @@ export const Header = styled.header`
   }
 
   form {
-    margin-top: 30px;
     width: 350px;
     max-width: 80vw;
     display: flex;
@@ -77,6 +59,7 @@ export const Header = styled.header`
       display: flex;
       justify-content: center;
       align-items: center;
+      cursor: pointer;
     }
   }
   
