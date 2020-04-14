@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
+import { ToastContainer, toast } from 'react-toastify';
 
 import api from '../../services/api';
+import isValidSummonerName from '../../utils/isValidSummonerName';
 
 import { Container } from './styles';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Main({ history }) {
   const [summonerName, setSummonerName] = useState('');
@@ -21,14 +24,32 @@ export default function Main({ history }) {
     { id: 'ru', name: 'RU' },
     { id: 'tr1', name: 'TR' }
   ];
+  
+  function handleError(message) {
+    toast.error(message, {
+      className: 'styled_toast-background',
+      progressClassName: 'styled_toast-progress-bar',
+    })
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
+
+
+    if(!isValidSummonerName(summonerName)) {
+      handleError('Informe um nome de invocador válido.');
+      return;
+    }
 
     const response = await api.post('/summoners', {
       summonerName,
       region,
     });
+
+    if(response.data === 'Summoner not found!') {
+      handleError('Esse invocador não foi encontrado! 😢');
+      return;
+    }
     
     history.push('/summoner', response.data);
   }
@@ -59,6 +80,10 @@ export default function Main({ history }) {
           <FaSearch />
         </button>
       </form>
+
+      <ToastContainer 
+        position="bottom-right"
+      />
     </Container>
   );
 }
