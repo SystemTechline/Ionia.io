@@ -12,15 +12,12 @@ export const Container = styled.div`
     background-image: url(${bg});
     background-position: center;
     background-size: cover;
+    font-family: 'Beaufort Bold', 'Times New Roman', Times, serif;
     text-shadow: 2px 2px 3px #0e141b;
 
     @media only screen and (max-width: 600px) {
       & {
         flex-direction: column;
-      }
-
-      .info-group {
-        align-items: center;
       }
     }
 
@@ -46,31 +43,21 @@ export const Container = styled.div`
         overflow: hidden;
         border-radius: 50%;
       }
+
+      strong {
+        position: absolute;
+        top: 151px;
+        left: 88px;
+        color: #eee2cc;
+        font-size: 0.9em;
+        user-select: none;
+        -webkit-touch-callout: none;
+      }
     }
 
-    .info-group {
-      display: flex;
-      flex-direction: column;
-
-      h2 {
-        font-family: 'Beaufort Bold', 'Times New Roman', Times, serif;
-        color: #ca9d4b;
-      }
-
-      small {
-        color: #eee2cc;
-      }
-
-      button {
-        width: 100px;
-        background-color: #ca9d4b;
-        color: #eee2cc;
-        border: none;
-        border-radius: 5px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
+    h2 {
+      color: #ca9d4b;
+      font-size: 1.9em;
     }
   }
 `;

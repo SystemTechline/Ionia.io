@@ -18,13 +18,16 @@ export default function SummonerInfo( { location: { state } } ) {
         <div className="icon-group">
           <img id="icon" src={urlIcon} alt={summonerName}/>
           { border && 
-            <img id="border" src={`http://localhost:3333/static/images/${border}.png`} alt="border"/> 
+            <img 
+              id="border" 
+              src={`http://localhost:3333/static/images/${border}.png`} 
+              alt="border"
+              draggable="false"
+            /> 
           }
+          <strong>{summonerLevel}</strong>
         </div>
-        <div className="info-group">
-          <h2>{summonerName}</h2>
-          <small>Level {summonerLevel}</small>
-        </div>
+        <h2>{summonerName}</h2>
       </header>
     </Container>
   );
