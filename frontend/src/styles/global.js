@@ -32,4 +32,12 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
     background-color: #0e141b;
   }
+
+  .styled_toast-background {
+    background-color: #D1363A;
+  }
+
+  .styled_toast-progress-bar {
+    background: #E7E6E3;
+  }
 `;
