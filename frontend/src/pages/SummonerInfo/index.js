@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
+import Navbar from '../../components/Navbar';
+
 import getBorder from '../../utils/getBorder';
 
 import { Container } from './styles';
 
-export default function SummonerInfo( { location: { state } } ) {
+export default function SummonerInfo( { location: { state }, history } ) {
   const [border, setBorder] = useState('');
   const { summonerName, summonerLevel, urlIcon } = state;
 
@@ -14,6 +16,7 @@ export default function SummonerInfo( { location: { state } } ) {
 
   return (
     <Container>
+      <Navbar history={history}/>
       <header>
         <div className="icon-group">
           <img id="icon" src={urlIcon} alt={summonerName}/>
