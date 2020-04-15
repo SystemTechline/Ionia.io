@@ -45,6 +45,7 @@ export const Container = styled.div`
       }
 
       strong {
+        width: 24px;
         position: absolute;
         top: 151px;
         left: 88px;
@@ -52,6 +53,7 @@ export const Container = styled.div`
         font-size: 0.9em;
         user-select: none;
         -webkit-touch-callout: none;
+        text-align: center;
       }
     }
 
