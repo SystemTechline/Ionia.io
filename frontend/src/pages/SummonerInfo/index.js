@@ -10,7 +10,7 @@ export default function SummonerInfo( { location: { state } } ) {
 
   useEffect(() => {
     setBorder(getBorder(summonerLevel));
-  }, [border, summonerLevel]); 
+  }, [border, summonerLevel]);
 
   return (
     <Container>
