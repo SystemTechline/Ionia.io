@@ -55,4 +55,10 @@ export const StyledLink = styled(Link)`
   text-decoration: none;
   font-size: 1.3em;
   color: #f9f9f9;
+
+  img {
+    width: 20px;
+    height: 20px;
+    margin: 0 10px;
+  }
 `;

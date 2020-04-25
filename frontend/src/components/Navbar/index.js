@@ -1,16 +1,17 @@
 import React from 'react';
-import { IoIosArrowBack } from 'react-icons/io'
 
 import Search from '../Search';
 
 import { Container, StyledLink } from './styles';
 
+import logo from '../../images/logo.png';
+
 export default function Navbar({ history }) {
   return (
     <Container>
       <StyledLink to='/'>
-        <IoIosArrowBack />
-        Home
+        <img src={logo} alt="Ionia Logo"/>
+        IONIA
       </StyledLink>
       <Search 
         history={history} 
