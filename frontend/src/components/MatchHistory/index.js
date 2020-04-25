@@ -26,6 +26,13 @@ export default function MatchHistory({ summonerName, region }) {
   return (
     <Container>
       <h2>Histórico de Partidas</h2>
+      {matches && matches.map(match => (
+        <div key={match.gameId}>
+          <strong>Campeão {match.champion}</strong>
+          <small>Modo de jogo {match.queue}</small>
+          <button onClick={() => {handleGameSearch(match.gameId, region)}}>Ver Detalhes</button>
+        </div>
+      ))}
     </Container>
   );
 }
