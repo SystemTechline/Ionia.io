@@ -59,9 +59,9 @@ module.exports = {
             console.log("Registered Summoner!");
             return res.json(summoner);
         }catch(error){
-            console.log(error);
+            console.log("Summoner not found!");
 
             return res.json("Summoner not found!");
         }
-    },
+    },   
 };

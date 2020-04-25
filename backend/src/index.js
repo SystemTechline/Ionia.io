@@ -1,5 +1,5 @@
 import { dotenv } from 'dotenv/config';
-const express     = require('express');
+const express = require('express');
 const cors = require('cors');
 const requireDir  = require('require-dir');
 const mongoose    = require('mongoose');
